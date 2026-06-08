@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUNOKAWAN ROTI E – Donat & Roti Istimewa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0392B;
+    --dark-red: #8B1A1A;
+    --deep-red: #5C0A0A;
+    --gold: #D4A017;
+    --dark-gold: #9A7000;
+    --cream: #FFF8EC;
+    --warm-white: #FFFDF8;
+    --charcoal: #1A1A1A;
+    --brown: #3D1C02;
+    --text-dark: #1C0A00;
+    --text-mid: #5C3A1E;
+    --batik-1: #C0392B;
+    --batik-2: #D4A017;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lato', sans-serif; background: var(--warm-white); color: var(--text-dark); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(28, 10, 0, 0.96);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 72px;
+    border-bottom: 1px solid rgba(212, 160, 23, 0.3);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo img { height: 50px; width: 50px; object-fit: cover; border-radius: 50%; border: 2px solid var(--gold); }
+  .nav-brand { font-family: 'Cinzel Decorative', serif; color: var(--gold); font-size: 13px; letter-spacing: 1px; line-height: 1.3; }
+  .nav-brand span { display: block; color: #FFF8EC; font-size: 9px; font-family: 'Lato', sans-serif; letter-spacing: 3px; font-weight: 300; }
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav ul a { text-decoration: none; color: rgba(255,248,236,0.8); font-size: 13px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; transition: color 0.2s; }
+  nav ul a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--deep-red);
+    padding: 10px 24px; font-weight: 700; font-size: 12px;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    border-radius: 2px; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #E8B82A; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--deep-red);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding-top: 72px;
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image:
+      repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%),
+      repeating-linear-gradient(-45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+    background-size: 30px 30px;
+  }
+  .hero-glow { position: absolute; top: -20%; right: -10%; width: 70vw; height: 70vw; background: radial-gradient(circle, rgba(192,57,43,0.4) 0%, transparent 65%); pointer-events: none; }
+  .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; max-width: 1200px; margin: 0 auto; padding: 80px 5%; }
+  .hero-text { }
+  .hero-badge { display: inline-block; background: rgba(212,160,23,0.15); border: 1px solid rgba(212,160,23,0.4); color: var(--gold); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; padding: 8px 20px; border-radius: 2px; margin-bottom: 28px; }
+  .hero-title { font-family: 'Cinzel Decorative', serif; font-size: clamp(28px, 4vw, 52px); color: var(--cream); line-height: 1.2; margin-bottom: 8px; }
+  .hero-title em { color: var(--gold); font-style: normal; display: block; }
+  .hero-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: rgba(255,248,236,0.6); margin-bottom: 28px; }
+  .hero-desc { font-size: 15px; color: rgba(255,248,236,0.7); line-height: 1.8; max-width: 440px; margin-bottom: 44px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--deep-red); padding: 15px 36px; font-weight: 700; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.2s; }
+  .btn-primary:hover { background: #E8B82A; transform: translateY(-2px); }
+  .btn-outline { border: 1px solid rgba(255,248,236,0.4); color: var(--cream); padding: 15px 36px; font-weight: 400; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; }
+  .hero-logo-wrap {
+    width: 380px; height: 380px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-logo-ring {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 1px solid rgba(212,160,23,0.2);
+    animation: spin-slow 25s linear infinite;
+  }
+  .hero-logo-ring::before {
+    content: '◆'; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    color: var(--gold); font-size: 10px;
+  }
+  .hero-logo-ring::after {
+    content: '◆'; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+    color: var(--gold); font-size: 10px;
+  }
+  .hero-logo-inner {
+    width: 300px; height: 300px; border-radius: 50%;
+    overflow: hidden; border: 3px solid var(--gold);
+    box-shadow: 0 0 60px rgba(212,160,23,0.2), 0 0 120px rgba(192,57,43,0.3);
+    position: relative; z-index: 2;
+  }
+  .hero-logo-inner img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-stats { display: flex; gap: 40px; margin-top: 48px; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--gold); font-weight: 700; }
+  .stat-label { font-size: 11px; color: rgba(255,248,236,0.5); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+  @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .hero-scroll {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,248,236,0.4); font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(212,160,23,0.6), transparent); animation: scroll-pulse 2s ease-in-out infinite; }
+  @keyframes scroll-pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+  /* MARQUEE */
+  .marquee-bar { background: var(--gold); padding: 14px 0; overflow: hidden; white-space: nowrap; }
+  .marquee-track { display: inline-flex; gap: 0; animation: marquee 20s linear infinite; }
+  .marquee-item { font-size: 12px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--deep-red); padding: 0 48px; }
+  .marquee-item::after { content: '◆'; margin-left: 48px; opacity: 0.6; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTION HEADER */
+  .section-header { text-align: center; margin-bottom: 60px; }
+  .section-eyebrow { display: inline-block; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 16px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 44px); color: var(--text-dark); line-height: 1.25; }
+  .section-title em { color: var(--red); font-style: italic; }
+  .section-line { width: 60px; height: 2px; background: var(--gold); margin: 20px auto 0; }
+  .section-desc { font-size: 15px; color: var(--text-mid); line-height: 1.8; max-width: 540px; margin: 20px auto 0; }
+
+  /* PRODUCTS SECTION */
+  .products { padding: 100px 5%; background: var(--warm-white); }
+  .product-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 56px; flex-wrap: wrap; }
+  .tab-btn {
+    padding: 12px 32px; background: transparent; border: 1px solid rgba(192,57,43,0.2);
+    color: var(--text-mid); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+    cursor: pointer; transition: all 0.2s; border-radius: 2px; font-family: 'Lato', sans-serif;
+  }
+  .tab-btn.active { background: var(--red); border-color: var(--red); color: white; }
+  .tab-btn:hover:not(.active) { border-color: var(--red); color: var(--red); }
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; max-width: 1200px; margin: 0 auto; }
+  .product-card {
+    background: white; border-radius: 4px; overflow: hidden;
+    border: 1px solid rgba(192,57,43,0.08);
+    transition: all 0.3s; cursor: pointer; position: relative;
+  }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(192,57,43,0.15); border-color: rgba(212,160,23,0.3); }
+  .product-img-wrap { aspect-ratio: 1; overflow: hidden; background: var(--cream); position: relative; }
+  .product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .product-card:hover .product-img-wrap img { transform: scale(1.06); }
+  .product-badge { position: absolute; top: 14px; left: 14px; background: var(--red); color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; padding: 5px 12px; border-radius: 2px; }
+  .product-badge.new { background: var(--gold); color: var(--deep-red); }
+  .product-info { padding: 20px 22px 24px; }
+  .product-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--text-dark); margin-bottom: 6px; }
+  .product-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--red); font-weight: 700; }
+  .product-price span { font-size: 12px; font-family: 'Lato', sans-serif; color: var(--text-mid); }
+  .add-btn {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--red); color: white;
+    border: none; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; font-family: 'Lato', sans-serif; line-height: 1;
+  }
+  .add-btn:hover { background: var(--dark-red); transform: scale(1.1); }
+
+  /* ABOUT / STORY */
+  .story { padding: 100px 5%; background: var(--deep-red); position: relative; overflow: hidden; }
+  .story-pattern { position: absolute; inset: 0; opacity: 0.05; background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%), repeating-linear-gradient(-45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%); background-size: 40px 40px; }
+  .story-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .story-visual { position: relative; }
+  .story-img-main {
+    width: 100%; aspect-ratio: 0.85;
+    background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;
+    border: 2px solid rgba(212,160,23,0.3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .story-img-main img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+  .story-accent {
+    position: absolute; bottom: -20px; right: -20px; width: 180px; height: 180px;
+    border: 2px solid rgba(212,160,23,0.4); border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--deep-red);
+  }
+  .story-accent-text { text-align: center; color: var(--gold); font-family: 'Playfair Display', serif; }
+  .story-accent-text strong { display: block; font-size: 40px; line-height: 1; }
+  .story-accent-text span { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; }
+  .story-text .section-header { text-align: left; }
+  .story-text .section-header .section-line { margin-left: 0; }
+  .story-text .section-title { color: var(--cream); }
+  .story-text .section-eyebrow { color: var(--gold); }
+  .story-body { font-size: 15px; color: rgba(255,248,236,0.75); line-height: 1.9; margin-bottom: 32px; }
+  .story-features { display: flex; flex-direction: column; gap: 20px; }
+  .story-feat { display: flex; gap: 16px; align-items: flex-start; }
+  .story-feat-icon { width: 44px; height: 44px; border: 1px solid rgba(212,160,23,0.4); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .story-feat-body h4 { font-size: 14px; font-weight: 700; color: var(--gold); letter-spacing: 1px; margin-bottom: 4px; text-transform: uppercase; }
+  .story-feat-body p { font-size: 13px; color: rgba(255,248,236,0.6); line-height: 1.6; }
+
+  /* MENU CATEGORIES */
+  .categories { padding: 100px 5%; background: var(--cream); }
+  .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+  .cat-card {
+    position: relative; aspect-ratio: 0.7; overflow: hidden; border-radius: 4px; cursor: pointer;
+    background: var(--red);
+  }
+  .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; opacity: 0.7; }
+  .cat-card:hover img { transform: scale(1.08); opacity: 0.5; }
+  .cat-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,10,0,0.9) 0%, rgba(28,10,0,0.1) 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; }
+  .cat-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; font-weight: 700; }
+  .cat-name { font-family: 'Playfair Display', serif; font-size: 26px; color: white; line-height: 1.2; margin-bottom: 12px; }
+  .cat-count { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
+  .cat-arrow { position: absolute; top: 24px; right: 24px; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; transition: all 0.2s; }
+  .cat-card:hover .cat-arrow { background: var(--gold); border-color: var(--gold); color: var(--deep-red); }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 100px 5%; background: white; }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+  .testi-card {
+    background: var(--cream); border-radius: 4px; padding: 36px;
+    border: 1px solid rgba(192,57,43,0.08); position: relative;
+  }
+  .testi-card::before { content: '"'; position: absolute; top: 20px; left: 28px; font-family: 'Playfair Display', serif; font-size: 80px; color: rgba(192,57,43,0.08); line-height: 1; }
+  .testi-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 16px; }
+  .testi-text { font-size: 14px; color: var(--text-mid); line-height: 1.8; font-style: italic; margin-bottom: 24px; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: 700; font-family: 'Playfair Display', serif; }
+  .testi-name { font-weight: 700; font-size: 14px; color: var(--text-dark); }
+  .testi-loc { font-size: 12px; color: var(--text-mid); margin-top: 2px; }
+
+  /* ORDER BANNER */
+  .order-banner { background: var(--red); padding: 80px 5%; text-align: center; position: relative; overflow: hidden; }
+  .order-banner::before { content: ''; position: absolute; inset: 0; opacity: 0.08; background-image: repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%), repeating-linear-gradient(-45deg, white 0, white 1px, transparent 0, transparent 50%); background-size: 30px 30px; }
+  .order-banner-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+  .order-banner h2 { font-family: 'Cinzel Decorative', serif; font-size: clamp(22px, 3.5vw, 40px); color: white; margin-bottom: 16px; }
+  .order-banner p { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 40px; }
+  .order-banner .btn-primary { background: white; color: var(--red); }
+  .order-banner .btn-primary:hover { background: var(--cream); }
+
+  /* CONTACT / FOOTER */
+  footer { background: var(--charcoal); color: rgba(255,255,255,0.7); padding: 80px 5% 40px; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto 60px; }
+  .footer-brand .nav-brand { font-size: 16px; display: block; margin-bottom: 16px; }
+  .footer-brand p { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.5); max-width: 280px; margin-top: 12px; }
+  .footer-social { display: flex; gap: 12px; margin-top: 28px; }
+  .social-btn { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.15); border-radius: 2px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 16px; text-decoration: none; transition: all 0.2s; }
+  .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-col h4 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 700; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul a { text-decoration: none; font-size: 14px; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+  .footer-col ul a:hover { color: var(--gold); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.3); }
+  .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+  /* CART FLOAT */
+  .cart-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 888;
+    width: 60px; height: 60px; background: var(--red); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: 0 8px 32px rgba(192,57,43,0.4);
+    transition: transform 0.2s;
+    text-decoration: none;
+  }
+  .cart-float:hover { transform: scale(1.1); }
+  .cart-float svg { width: 26px; height: 26px; fill: none; stroke: white; stroke-width: 1.8; }
+  .cart-badge { position: absolute; top: -2px; right: -2px; width: 22px; height: 22px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--deep-red); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    .hero-desc { margin: 0 auto 44px; }
+    .hero-actions { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-visual { order: -1; }
+    .hero-logo-wrap { width: 260px; height: 260px; }
+    .hero-logo-inner { width: 200px; height: 200px; }
+    .story-inner { grid-template-columns: 1fr; }
+    .cat-grid { grid-template-columns: 1fr 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav ul { display: none; }
+    .cat-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+  }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(32px); transition: all 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="punokawan-logo.jpg" alt="Punokawan Logo">
+    <div class="nav-brand">PUNOKAWAN ROTI E<span>Donat & Roti Istimewa</span></div>
+  </a>
+  <ul>
+    <li><a href="#donat">Donat</a></li>
+    <li><a href="#roti">Roti</a></li>
+    <li><a href="#tentang">Tentang Kami</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+  </ul>
+  <a href="#pesan" class="nav-cta">Pesan Sekarang</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">Warisan Rasa Nusantara</div>
+      <h1 class="hero-title">
+        PUNOKAWAN
+        <em>Roti E</em>
+      </h1>
+      <p class="hero-subtitle">Donat & Roti dengan Jiwa Pewayangan</p>
+      <p class="hero-desc">Terinspirasi dari kebijaksanaan Punokawan — Semar, Gareng, Petruk, dan Bagong — kami menghadirkan cita rasa istimewa yang kaya, lembut, dan penuh karakter dalam setiap gigitan.</p>
+      <div class="hero-actions">
+        <a href="#donat" class="btn-primary">Lihat Menu Donat</a>
+        <a href="#roti" class="btn-outline">Roti Kami</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Varian Rasa</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2.000+</div>
+          <div class="stat-label">Pelanggan Setia</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Bahan Segar</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-logo-wrap">
+        <div class="hero-logo-ring"></div>
+        <div class="hero-logo-inner">
+          <img src="punokawan-logo.jpg" alt="Punokawan Roti E">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Gulir</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="marquee-item">Donat Segar Setiap Hari</span>
+    <span class="marquee-item">Roti Tradisional Premium</span>
+    <span class="marquee-item">Dibuat dengan Cinta</span>
+    <span class="marquee-item">Rasa Nusantara Terbaik</span>
+    <span class="marquee-item">Pesan Sekarang</span>
+    <span class="marquee-item">Antar ke Pintu Rumah</span>
+    <span class="marquee-item">Donat Segar Setiap Hari</span>
+    <span class="marquee-item">Roti Tradisional Premium</span>
+    <span class="marquee-item">Dibuat dengan Cinta</span>
+    <span class="marquee-item">Rasa Nusantara Terbaik</span>
+    <span class="marquee-item">Pesan Sekarang</span>
+    <span class="marquee-item">Antar ke Pintu Rumah</span>
+  </div>
+</div>
+
+<!-- PRODUCTS: DONAT -->
+<section class="products" id="donat">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow">Menu Andalan</div>
+    <h2 class="section-title">Donat <em>Punokawan</em></h2>
+    <div class="section-line"></div>
+    <p class="section-desc">Setiap donat dibuat dari adonan pilihan yang diuleni dengan sabar, terinspirasi sifat Semar yang bijak — sederhana namun penuh makna.</p>
+  </div>
+
+  <div class="product-tabs">
+    <button class="tab-btn active" onclick="filterProduct('semua', this)">Semua</button>
+    <button class="tab-btn" onclick="filterProduct('original', this)">Original</button>
+    <button class="tab-btn" onclick="filterProduct('premium', this)">Premium</button>
+    <button class="tab-btn" onclick="filterProduct('spesial', this)">Spesial Lokal</button>
+  </div>
+
+  <div class="product-grid" id="product-grid">
+    <!-- Cards generated by JS -->
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="roti">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow">Kategori Menu</div>
+    <h2 class="section-title">Pilihan <em>Terlengkap</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card fade-up">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Donat Klasik" loading="lazy">
+      <div class="cat-overlay">
+        <div class="cat-label">Kategori 01</div>
+        <div class="cat-name">Donat Klasik</div>
+        <div class="cat-count">15 Varian Tersedia</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+    <div class="cat-card fade-up">
+      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80" alt="Roti Tawar & Manis" loading="lazy">
+      <div class="cat-overlay">
+        <div class="cat-label">Kategori 02</div>
+        <div class="cat-name">Roti Tawar & Manis</div>
+        <div class="cat-count">12 Varian Tersedia</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+    <div class="cat-card fade-up">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80" alt="Kue Spesial Lokal" loading="lazy">
+      <div class="cat-overlay">
+        <div class="cat-label">Kategori 03</div>
+        <div class="cat-name">Kue Spesial Lokal</div>
+        <div class="cat-count">8 Varian Tersedia</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="story" id="tentang">
+  <div class="story-pattern"></div>
+  <div class="story-inner">
+    <div class="story-visual">
+      <div class="story-img-main">
+        <img src="punokawan-logo.jpg" alt="Punokawan" style="opacity:0.9">
+      </div>
+      <div class="story-accent">
+        <div class="story-accent-text">
+          <strong>2019</strong>
+          <span>Berdiri Sejak</span>
+        </div>
+      </div>
+    </div>
+    <div class="story-text">
+      <div class="section-header">
+        <div class="section-eyebrow">Kisah Kami</div>
+        <h2 class="section-title">Filosofi <em>Punokawan</em></h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="story-body">
+        Punokawan — Semar, Gareng, Petruk, Bagong — adalah simbol kebijaksanaan rakyat dalam cerita pewayangan Jawa. Mereka mengajarkan kesederhanaan, ketulusan, dan kegembiraan.<br><br>
+        Kami mengambil semangat itu untuk setiap produk yang kami buat. Roti dan donat kami bukan sekadar makanan — tapi ekspresi budaya, ketulusan tangan pembuat, dan kebahagiaan yang kami bagikan kepada setiap pelanggan.
+      </p>
+      <div class="story-features">
+        <div class="story-feat">
+          <div class="story-feat-icon">🌾</div>
+          <div class="story-feat-body">
+            <h4>Bahan Lokal Terpilih</h4>
+            <p>Tepung terbaik dari petani lokal, telur segar, dan bahan alami pilihan</p>
+          </div>
+        </div>
+        <div class="story-feat">
+          <div class="story-feat-icon">🔥</div>
+          <div class="story-feat-body">
+            <h4>Panggang Segar Setiap Hari</h4>
+            <p>Diproduksi pagi hari agar selalu sampai dalam kondisi terbaik</p>
+          </div>
+        </div>
+        <div class="story-feat">
+          <div class="story-feat-icon">❤️</div>
+          <div class="story-feat-body">
+            <h4>Tanpa Pengawet</h4>
+            <p>Murni, alami, dan aman untuk seluruh keluarga termasuk anak-anak</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROTI SECTION -->
+<section class="products" id="roti-menu" style="background: var(--cream);">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow">Pilihan Roti</div>
+    <h2 class="section-title">Roti <em>Istimewa</em></h2>
+    <div class="section-line"></div>
+    <p class="section-desc">Lembut di luar, kenyal di dalam — seperti humor Petruk yang menghangatkan hari-hari kita.</p>
+  </div>
+  <div class="product-grid" id="roti-grid"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow">Kata Mereka</div>
+    <h2 class="section-title">Pelanggan <em>Setia Kami</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Donat Cokelat Semar-nya luar biasa! Lembutnya kayak nggak ada tandingannya. Saya pesan rutin tiap minggu untuk keluarga.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div>
+          <div class="testi-name">Siti Rahayu</div>
+          <div class="testi-loc">Blitar, Jawa Timur</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Roti Petruknya favorit anak-anak saya! Manisnya pas, bahannya jelas alami. Bangga beli produk lokal berkualitas tinggi seperti ini.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Ahmad Fauzi</div>
+          <div class="testi-loc">Tulungagung, Jawa Timur</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Sudah coba banyak donat, tapi Punokawan Roti E beda! Ada cita rasa khas lokal yang bikin kangen terus. Packagingnya juga cantik!</p>
+      <div class="testi-author">
+        <div class="testi-avatar">D</div>
+        <div>
+          <div class="testi-name">Dewi Kartika</div>
+          <div class="testi-loc">Malang, Jawa Timur</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER BANNER -->
+<section class="order-banner" id="pesan">
+  <div class="order-banner-inner">
+    <h2>Pesan Sekarang,<br>Nikmati Hari Ini</h2>
+    <p>Tersedia pengiriman setiap hari mulai pukul 06.00 – 20.00 WIB. Minimum order 5 pcs. Gratis ongkir untuk area Blitar kota!</p>
+    <a href="https://wa.me/6281234567890?text=Halo%20Punokawan%20Roti%20E%2C%20saya%20ingin%20pesan!" class="btn-primary" target="_blank">
+      Pesan via WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="kontak">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+        <img src="punokawan-logo.jpg" style="width:52px;height:52px;object-fit:cover;border-radius:50%;border:2px solid #D4A017;" alt="logo">
+        <span class="nav-brand" style="font-family:'Cinzel Decorative',serif;color:#D4A017;font-size:14px;">PUNOKAWAN ROTI E</span>
+      </div>
+      <p>Toko donat dan roti premium terinspirasi tokoh pewayangan Punokawan. Kami menghadirkan cita rasa nusantara dengan sentuhan modern.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">ig</a>
+        <a href="#" class="social-btn">fb</a>
+        <a href="https://wa.me/6281234567890" class="social-btn">wa</a>
+        <a href="#" class="social-btn">yt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="#donat">Donat Original</a></li>
+        <li><a href="#donat">Donat Premium</a></li>
+        <li><a href="#donat">Donat Spesial Lokal</a></li>
+        <li><a href="#roti">Roti Tawar</a></li>
+        <li><a href="#roti">Roti Manis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Informasi</h4>
+      <ul>
+        <li><a href="#tentang">Tentang Kami</a></li>
+        <li><a href="#">Cara Pemesanan</a></li>
+        <li><a href="#">Syarat & Ketentuan</a></li>
+        <li><a href="#">Kebijakan Privasi</a></li>
+        <li><a href="#">Karir</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontak</h4>
+      <ul>
+        <li><a href="#">📍 Jl. Punokawan No. 88, Blitar</a></li>
+        <li><a href="tel:+6281234567890">📞 0812-3456-7890</a></li>
+        <li><a href="mailto:info@punokawanrotie.com">✉ info@punokawanrotie.com</a></li>
+        <li><a href="#">⏰ Buka: 06.00 – 20.00 WIB</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Punokawan Roti E. Seluruh Hak Cipta Dilindungi.</p>
+    <p>Dibuat dengan ❤️ untuk <a href="#">Blitar & Nusantara</a></p>
+  </div>
+</footer>
+
+<!-- CART FLOAT -->
+<a href="#pesan" class="cart-float">
+  <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+  <div class="cart-badge" id="cart-count">0</div>
+</a>
+
+<script>
+const donutData = [
+  { id:1, name:"Semar Cokelat Premium", desc:"Cokelat Belgia 72% dengan taburan almond panggang pilihan", price:18000, cat:"premium", badge:"Terlaris", badgeType:"" },
+  { id:2, name:"Gareng Matcha", desc:"Matcha Kyoto grade premium dengan krim keju lembut", price:16000, cat:"premium", badge:"Baru", badgeType:"new" },
+  { id:3, name:"Petruk Stroberi", desc:"Glasir stroberi segar dengan taburan sprinkles warna-warni", price:12000, cat:"original", badge:"", badgeType:"" },
+  { id:4, name:"Bagong Pisang Karamel", desc:"Pisang cavendish lokal dengan saus karamel gurih manis", price:14000, cat:"spesial", badge:"Spesial", badgeType:"" },
+  { id:5, name:"Semar Original Glazed", desc:"Donat klasik dengan lapisan gula putih sempurna dan lembut", price:10000, cat:"original", badge:"", badgeType:"" },
+  { id:6, name:"Petruk Red Velvet", desc:"Red velvet mewah dengan krim keju frosting tebal", price:17000, cat:"premium", badge:"Baru", badgeType:"new" },
+  { id:7, name:"Gareng Pandan Kelapa", desc:"Pandan Jawa asli dengan parutan kelapa muda harum", price:13000, cat:"spesial", badge:"Lokal", badgeType:"" },
+  { id:8, name:"Bagong Tiramisu", desc:"Tiramisu Italia bertemu sentuhan espresso Jawa terbaik", price:19000, cat:"premium", badge:"", badgeType:"" },
+];
+
+const rotiData = [
+  { id:9, name:"Roti Tawar Susu Premium", desc:"Empuk dan wangi susu segar, cocok untuk sarapan keluarga", price:22000, badge:"Terlaris", badgeType:"" },
+  { id:10, name:"Roti Sobek Keju Ganda", desc:"Keju stretchy berlimpah dalam roti sobek yang harum dan menggiurkan", price:28000, badge:"", badgeType:"" },
+  { id:11, name:"Roti Cokelat Banana", desc:"Perpaduan pisang dan cokelat dalam roti manis berkulit tipis renyah", price:18000, badge:"Baru", badgeType:"new" },
+  { id:12, name:"Roti Polo Isi Srikaya", desc:"Isi srikaya pandan khas Jawa yang harum dan melimpah", price:15000, badge:"Spesial", badgeType:"" },
+];
+
+let cartCount = 0;
+
+function createCard(item) {
+  const img = item.id <= 8
+    ? `https://source.unsplash.com/300x300/?donut,${item.id}`
+    : `https://source.unsplash.com/300x300/?bread,${item.id}`;
+  return `
+    <div class="product-card" data-cat="${item.cat || 'roti'}">
+      <div class="product-img-wrap">
+        <img src="https://picsum.photos/seed/${item.id+10}/400/400" alt="${item.name}" loading="lazy">
+        ${item.badge ? `<div class="product-badge ${item.badgeType}">${item.badge}</div>` : ''}
+      </div>
+      <div class="product-info">
+        <div class="product-name">${item.name}</div>
+        <div class="product-desc">${item.desc}</div>
+        <div class="product-footer">
+          <div class="product-price">Rp ${item.price.toLocaleString('id-ID')}<span>/pcs</span></div>
+          <button class="add-btn" onclick="addToCart(event)">+</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderProducts(data, gridId) {
+  document.getElementById(gridId).innerHTML = data.map(createCard).join('');
+}
+
+function filterProduct(cat, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const cards = document.querySelectorAll('#product-grid .product-card');
+  cards.forEach(c => {
+    c.style.display = (cat === 'semua' || c.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+
+function addToCart(e) {
+  e.stopPropagation();
+  cartCount++;
+  document.getElementById('cart-count').textContent = cartCount;
+  const btn = e.currentTarget;
+  btn.style.transform = 'scale(1.3)';
+  btn.style.background = '#D4A017';
+  setTimeout(() => { btn.style.transform = ''; btn.style.background = ''; }, 300);
+}
+
+renderProducts(donutData, 'product-grid');
+renderProducts(rotiData, 'roti-grid');
+
+// Scroll animation
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Nav highlight
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.background = window.scrollY > 50 ? 'rgba(28,10,0,0.98)' : 'rgba(28,10,0,0.96)';
+});
+</script>
+</body>
+</html>
