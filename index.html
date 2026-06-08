@@ -611,21 +611,26 @@
 
 <script>
 const donutData = [
-  { id:1, name:"Semar Cokelat Premium", desc:"Cokelat Belgia 72% dengan taburan almond panggang pilihan", price:18000, cat:"premium", badge:"Terlaris", badgeType:"", img:"https://cdn.pixabay.com/photo/2017/01/11/11/33/cake-1971552_640.jpg" },
-  { id:2, name:"Gareng Matcha", desc:"Matcha Kyoto grade premium dengan krim keju lembut", price:16000, cat:"premium", badge:"Baru", badgeType:"new", img:"https://cdn.pixabay.com/photo/2016/11/29/09/16/doughnuts-1868573_640.jpg" },
-  { id:3, name:"Petruk Stroberi", desc:"Glasir stroberi segar dengan taburan sprinkles warna-warni", price:12000, cat:"original", badge:"", badgeType:"", img:"https://cdn.pixabay.com/photo/2017/09/05/12/21/doughnut-2718645_640.jpg" },
-  { id:4, name:"Bagong Pisang Karamel", desc:"Pisang cavendish lokal dengan saus karamel gurih manis", price:14000, cat:"spesial", badge:"Spesial", badgeType:"", img:"https://cdn.pixabay.com/photo/2014/11/05/15/57/doughnut-518375_640.jpg" },
-  { id:5, name:"Semar Original Glazed", desc:"Donat klasik dengan lapisan gula putih sempurna dan lembut", price:10000, cat:"original", badge:"", badgeType:"", img:"https://cdn.pixabay.com/photo/2016/11/29/13/14/doughnuts-1869535_640.jpg" },
-  { id:6, name:"Petruk Red Velvet", desc:"Red velvet mewah dengan krim keju frosting tebal", price:17000, cat:"premium", badge:"Baru", badgeType:"new", img:"https://cdn.pixabay.com/photo/2020/04/02/10/00/donuts-4993550_640.jpg" },
-  { id:7, name:"Gareng Pandan Kelapa", desc:"Pandan Jawa asli dengan parutan kelapa muda harum", price:13000, cat:"spesial", badge:"Lokal", badgeType:"", img:"https://cdn.pixabay.com/photo/2017/09/05/12/21/doughnut-2718648_640.jpg" },
-  { id:8, name:"Bagong Tiramisu", desc:"Tiramisu Italia bertemu sentuhan espresso Jawa terbaik", price:19000, cat:"premium", badge:"", badgeType:"", img:"https://cdn.pixabay.com/photo/2016/11/29/13/14/doughnuts-1869533_640.jpg" },
+const donutSVG = (color1, color2, label) => `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><rect width='400' height='400' fill='${encodeURIComponent(color1)}'/><circle cx='200' cy='180' r='100' fill='${encodeURIComponent(color2)}'/><circle cx='200' cy='180' r='40' fill='${encodeURIComponent(color1)}'/><ellipse cx='200' cy='180' rx='100' ry='20' fill='none' stroke='${encodeURIComponent(color2)}' stroke-width='0'/><text x='200' y='320' text-anchor='middle' font-family='sans-serif' font-size='28' font-weight='bold' fill='white'>${encodeURIComponent(label)}</text><text x='200' y='355' text-anchor='middle' font-family='sans-serif' font-size='40'>🍩</text></svg>`;
+
+const rotiSVG = (color1, color2, label) => `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><rect width='400' height='400' fill='${encodeURIComponent(color1)}'/><ellipse cx='200' cy='190' rx='130' ry='90' fill='${encodeURIComponent(color2)}'/><ellipse cx='200' cy='175' rx='110' ry='75' fill='${encodeURIComponent(color2)}' opacity='0.7'/><text x='200' y='320' text-anchor='middle' font-family='sans-serif' font-size='28' font-weight='bold' fill='white'>${encodeURIComponent(label)}</text><text x='200' y='355' text-anchor='middle' font-family='sans-serif' font-size='40'>🍞</text></svg>`;
+
+const donutData = [
+  { id:1, name:"Semar Cokelat Premium", desc:"Cokelat Belgia 72% dengan taburan almond panggang pilihan", price:18000, cat:"premium", badge:"Terlaris", badgeType:"", img:donutSVG('%238B1A1A','%23D4A017','Cokelat Premium') },
+  { id:2, name:"Gareng Matcha", desc:"Matcha Kyoto grade premium dengan krim keju lembut", price:16000, cat:"premium", badge:"Baru", badgeType:"new", img:donutSVG('%232D5A27','%2356A832','Matcha') },
+  { id:3, name:"Petruk Stroberi", desc:"Glasir stroberi segar dengan taburan sprinkles warna-warni", price:12000, cat:"original", badge:"", badgeType:"", img:donutSVG('%23C0392B','%23F1948A','Stroberi') },
+  { id:4, name:"Bagong Pisang Karamel", desc:"Pisang cavendish lokal dengan saus karamel gurih manis", price:14000, cat:"spesial", badge:"Spesial", badgeType:"", img:donutSVG('%23D4A017','%23F0C040','Pisang Karamel') },
+  { id:5, name:"Semar Original Glazed", desc:"Donat klasik dengan lapisan gula putih sempurna dan lembut", price:10000, cat:"original", badge:"", badgeType:"", img:donutSVG('%235C0A0A','%23E8C9A0','Original Glazed') },
+  { id:6, name:"Petruk Red Velvet", desc:"Red velvet mewah dengan krim keju frosting tebal", price:17000, cat:"premium", badge:"Baru", badgeType:"new", img:donutSVG('%238B0000','%23C0392B','Red Velvet') },
+  { id:7, name:"Gareng Pandan Kelapa", desc:"Pandan Jawa asli dengan parutan kelapa muda harum", price:13000, cat:"spesial", badge:"Lokal", badgeType:"", img:donutSVG('%231A5C2A','%2327AE60','Pandan Kelapa') },
+  { id:8, name:"Bagong Tiramisu", desc:"Tiramisu Italia bertemu sentuhan espresso Jawa terbaik", price:19000, cat:"premium", badge:"", badgeType:"", img:donutSVG('%233D1C02','%23795548','Tiramisu') },
 ];
 
 const rotiData = [
-  { id:9, name:"Roti Tawar Susu Premium", desc:"Empuk dan wangi susu segar, cocok untuk sarapan keluarga", price:22000, badge:"Terlaris", badgeType:"", img:"https://cdn.pixabay.com/photo/2016/11/23/14/45/bread-1853396_640.jpg" },
-  { id:10, name:"Roti Sobek Keju Ganda", desc:"Keju stretchy berlimpah dalam roti sobek yang harum dan menggiurkan", price:28000, badge:"", badgeType:"", img:"https://cdn.pixabay.com/photo/2017/06/23/23/57/bread-2436370_640.jpg" },
-  { id:11, name:"Roti Cokelat Banana", desc:"Perpaduan pisang dan cokelat dalam roti manis berkulit tipis renyah", price:18000, badge:"Baru", badgeType:"new", img:"https://cdn.pixabay.com/photo/2018/05/15/23/01/pastry-3404891_640.jpg" },
-  { id:12, name:"Roti Polo Isi Srikaya", desc:"Isi srikaya pandan khas Jawa yang harum dan melimpah", price:15000, badge:"Spesial", badgeType:"", img:"https://cdn.pixabay.com/photo/2017/09/08/20/30/bread-2730154_640.jpg" },
+  { id:9, name:"Roti Tawar Susu Premium", desc:"Empuk dan wangi susu segar, cocok untuk sarapan keluarga", price:22000, badge:"Terlaris", badgeType:"", img:rotiSVG('%23D4A017','%23F5CBA7','Roti Tawar Susu') },
+  { id:10, name:"Roti Sobek Keju Ganda", desc:"Keju stretchy berlimpah dalam roti sobek yang harum dan menggiurkan", price:28000, badge:"", badgeType:"", img:rotiSVG('%23C0392B','%23F0B27A','Roti Sobek Keju') },
+  { id:11, name:"Roti Cokelat Banana", desc:"Perpaduan pisang dan cokelat dalam roti manis berkulit tipis renyah", price:18000, badge:"Baru", badgeType:"new", img:rotiSVG('%233D1C02','%23A0522D','Cokelat Banana') },
+  { id:12, name:"Roti Polo Isi Srikaya", desc:"Isi srikaya pandan khas Jawa yang harum dan melimpah", price:15000, badge:"Spesial", badgeType:"", img:rotiSVG('%231A5C2A','%2352BE80','Roti Srikaya') },
 ];
 
 let cartCount = 0;
