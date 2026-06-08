@@ -610,7 +610,6 @@
 </a>
 
 <script>
-const donutData = [
 const donutSVG = (color1, color2, label) => `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><rect width='400' height='400' fill='${encodeURIComponent(color1)}'/><circle cx='200' cy='180' r='100' fill='${encodeURIComponent(color2)}'/><circle cx='200' cy='180' r='40' fill='${encodeURIComponent(color1)}'/><ellipse cx='200' cy='180' rx='100' ry='20' fill='none' stroke='${encodeURIComponent(color2)}' stroke-width='0'/><text x='200' y='320' text-anchor='middle' font-family='sans-serif' font-size='28' font-weight='bold' fill='white'>${encodeURIComponent(label)}</text><text x='200' y='355' text-anchor='middle' font-family='sans-serif' font-size='40'>🍩</text></svg>`;
 
 const rotiSVG = (color1, color2, label) => `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><rect width='400' height='400' fill='${encodeURIComponent(color1)}'/><ellipse cx='200' cy='190' rx='130' ry='90' fill='${encodeURIComponent(color2)}'/><ellipse cx='200' cy='175' rx='110' ry='75' fill='${encodeURIComponent(color2)}' opacity='0.7'/><text x='200' y='320' text-anchor='middle' font-family='sans-serif' font-size='28' font-weight='bold' fill='white'>${encodeURIComponent(label)}</text><text x='200' y='355' text-anchor='middle' font-family='sans-serif' font-size='40'>🍞</text></svg>`;
